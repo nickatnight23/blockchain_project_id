@@ -65,11 +65,14 @@ class Block {
      *     or Reject with an error.
      */
     getBData() {
-        // Getting the encoded data saved in the Block
-        // Decoding the data to retrieve the JSON representation of the object
-        // Parse the data to an object to be retrieve.
+       let dataEncode = this.body;       // Getting the encoded data saved in the Block
+       let dataJson = hex2ascii(dataEncode)     // Decoding the data to retrieve the JSON representation of the object
+      let data = Json.parse(dataJson);          // Parse the data to an object to be retrieve.
+        if(data && this.height > 0){
+            return data;                // Resolve with the data if the object isn't the Genesis block
+        }
 
-        // Resolve with the data if the object isn't the Genesis block
+        
 
     }
 
